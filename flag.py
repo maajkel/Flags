@@ -86,7 +86,7 @@ def get_regions(graph, tree=None):
     reg_nr = 0
     for region in tree.get_regions():
         print(reg_nr, ": ", end="")
-        for point in region.points:
+        for point in region.items:
             print(point.id, end = ", ")
             region_set[point.id] = reg_nr
         print()
@@ -120,7 +120,7 @@ def get_boundary_nodes(graph, tree=None):
 # Runs Dijkstra's algorithm and returns the distance array or the distance to vertex t, if specified
 # Sets arg-flag values for the start vertex region and if t is specified, searches shortest paths using
 # precomputed arg-flag values 
-def dijkstra(graph, s, t=None, use_arcs=False):
+def dijkstra(graph, s, t=None, use_arcs=False): # TODO Add region_data passing as parameter
     start_region = get_regions(graph)[s.id]
     target_region = 0
     
